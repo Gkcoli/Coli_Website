@@ -1,9 +1,13 @@
+'use client';
+
+import { motion } from 'framer-motion';
+
 export default function Home() {
   const skills = [
-    { name: "Python", color: "bg-[#e8e5a0]", icon: "🐍" },
-    { name: "Java", color: "bg-[#a8c5d1]", icon: "☕" },
-    { name: "TensorFlow", color: "bg-[#d4d4d4]", icon: "TF" },
-    { name: "PyTorch", color: "bg-[#7ba7d1]", icon: "PT" },
+    { name: "Python", color: "bg-[#e8e5a0]", icon: "/Python-logo-notext.svg.webp", isImage: true },
+    { name: "Java", color: "bg-[#a8c5d1]", icon: "/java.png", isImage: true },
+    { name: "TensorFlow", color: "bg-[#d4d4d4]", icon: "/Tensorflow_logo.svg.webp", isImage: true },
+    { name: "PyTorch", color: "bg-[#7ba7d1]", icon: "/pytorchh.png", isImage: true },
     { name: "Pandas", color: "bg-[#9dcc7a]", icon: "🐼" },
     { name: "Git", color: "bg-[#7dd3c0]", icon: "GIT" },
   ];
@@ -45,6 +49,9 @@ export default function Home() {
             <a href="#projects" className="text-sm text-gray-400 hover:text-[#a8f5a8] transition-colors">
               projects
             </a>
+            <a href="#seminars" className="text-sm text-gray-400 hover:text-[#a8f5a8] transition-colors">
+              seminars
+            </a>
             <a href="#affiliations" className="text-sm text-gray-400 hover:text-[#a8f5a8] transition-colors">
               affiliations
             </a>
@@ -75,12 +82,29 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Left - Text Content */}
-            <div className="space-y-8">
+            <motion.div 
+              className="space-y-8"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+            >
               <div>
-                <p className="text-xl md:text-2xl text-gray-400 mb-2">Hi, I&apos;m</p>
-                <h1 className="text-6xl md:text-7xl font-medium">
+                <motion.p 
+                  className="text-xl md:text-2xl text-gray-400 mb-2"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.2 }}
+                >
+                  Hi, I&apos;m
+                </motion.p>
+                <motion.h1 
+                  className="text-6xl md:text-7xl font-medium"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                >
                   Gian Karl<br />Colinares
-                </h1>
+                </motion.h1>
               </div>
               
               <div className="space-y-4 text-gray-400 leading-relaxed">
@@ -91,36 +115,28 @@ export default function Home() {
                   📧 gkcolinares@gmail.com | 📱 0956-253-5772
                 </p>
               </div>
-
-              <div className="flex gap-4 pt-4">
-                <a href="/COLINARESGIANKARL_CV.pdf" download className="bg-white text-black px-8 py-3 rounded-full font-medium hover:bg-gray-200 transition-colors">
-                  Download CV
-                </a>
-                <a href="#projects" className="text-white px-8 py-3 rounded-full font-medium hover:bg-white/10 transition-colors">
-                  See projects
-                </a>
-              </div>
-            </div>
+            </motion.div>
 
             {/* Right - Profile Image */}
-            <div className="flex justify-center lg:justify-end">
+            <motion.div 
+              className="flex justify-center lg:justify-end"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
               <div className="relative">
-                <div className="w-80 h-80 rounded-full bg-gradient-to-br from-[#a8f5a8] to-[#7dd3c0] p-1">
-                  <div className="w-full h-full rounded-full bg-[#0f0f0f] flex items-end justify-center overflow-hidden">
-                    {/* Placeholder for profile image */}
-                    <div className="w-full h-full bg-gradient-to-br from-[#a8f5a8]/20 to-[#7dd3c0]/20 flex items-center justify-center">
-                      <span className="text-8xl">👨‍💻</span>
-                    </div>
+                <div className="w-80 h-80 rounded-full bg-linear-to-br from-[#a8f5a8] to-[#7dd3c0] p-1">
+                  <div className="w-full h-full rounded-full bg-[#0f0f0f] flex items-center justify-center overflow-hidden">
+                    {/* Profile image */}
+                    <img 
+                      src="/DSC_0402.JPG" 
+                      alt="Gian Karl Colinares" 
+                      className="w-full h-full object-cover rounded-full"
+                    />
                   </div>
                 </div>
-                {/* Green badge */}
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-[#a8f5a8] p-3 rounded-lg">
-                  <svg className="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
-                  </svg>
-                </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -138,34 +154,65 @@ export default function Home() {
           {/* Skills Grid */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-12">
             {skills.map((skill, index) => (
-              <div
+              <motion.div
                 key={index}
-                className={`${skill.color} rounded-3xl p-8 aspect-square flex flex-col items-center justify-center text-center transition-transform hover:scale-105 cursor-pointer`}
+                className={`${skill.color} rounded-3xl p-6 aspect-square flex flex-col items-center justify-center text-center cursor-pointer`}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ scale: 1.05, rotate: 5 }}
+                whileTap={{ scale: 0.95 }}
               >
                 <div className="text-4xl font-bold text-black mb-3">
-                  {skill.icon}
+                  {skill.isImage ? (
+                    <img src={skill.icon} alt={skill.name} className="w-12 h-12 object-contain" />
+                  ) : (
+                    skill.icon
+                  )}
                 </div>
                 <div className="text-black font-medium text-sm">
                   {skill.name}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
           {/* Additional Tools */}
           <div className="grid md:grid-cols-3 gap-6 mt-8">
-            <div className="bg-[#1a1a1a] rounded-2xl p-6">
+            <motion.div 
+              className="bg-[#1a1a1a] rounded-2xl p-8"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              whileHover={{ y: -5 }}
+            >
               <h3 className="text-lg font-semibold mb-3 text-[#a8f5a8]">Libraries & Frameworks</h3>
               <p className="text-gray-400 text-sm">Pandas, TensorFlow, Matplotlib, NumPy, PyTorch, Seaborn</p>
-            </div>
-            <div className="bg-[#1a1a1a] rounded-2xl p-6">
+            </motion.div>
+            <motion.div 
+              className="bg-[#1a1a1a] rounded-2xl p-8"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              whileHover={{ y: -5 }}
+            >
               <h3 className="text-lg font-semibold mb-3 text-[#a8f5a8]">Tools & Technologies</h3>
               <p className="text-gray-400 text-sm">Jupyter Notebook, Google Suite, Microsoft Office, Git, GitHub</p>
-            </div>
-            <div className="bg-[#1a1a1a] rounded-2xl p-6">
+            </motion.div>
+            <motion.div 
+              className="bg-[#1a1a1a] rounded-2xl p-8"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              whileHover={{ y: -5 }}
+            >
               <h3 className="text-lg font-semibold mb-3 text-[#a8f5a8]">Databases</h3>
               <p className="text-gray-400 text-sm">SQL, NoSQL</p>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -173,20 +220,39 @@ export default function Home() {
       {/* Education Section */}
       <section id="education" className="py-20 px-8 bg-[#0f0f0f]">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-5xl font-bold mb-12">Education</h2>
+          <motion.h2 
+            className="text-5xl font-bold mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            Education
+          </motion.h2>
           
           <div className="space-y-8">
-            <div className="border-l-4 border-[#a8f5a8] pl-8 py-4">
+            <motion.div 
+              className="border-l-4 border-[#a8f5a8] pl-8 py-4"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+            >
               <h3 className="text-2xl font-semibold mb-2">BS Computer Science - Machine Learning</h3>
               <p className="text-gray-400 mb-2">National University - Manila • 2022 - Present</p>
               <p className="text-gray-500">Specializing in Machine Learning and Artificial Intelligence</p>
-            </div>
+            </motion.div>
             
-            <div className="border-l-4 border-[#7dd3c0] pl-8 py-4">
+            <motion.div 
+              className="border-l-4 border-[#7dd3c0] pl-8 py-4"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+            >
               <h3 className="text-2xl font-semibold mb-2">Information and Communication Technology</h3>
               <p className="text-gray-400 mb-2">Army's Angels Integrated School • 2020 - 2022</p>
               <p className="text-gray-500">Senior High School - ICT Strand</p>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -194,11 +260,26 @@ export default function Home() {
       {/* Projects Section */}
       <section id="projects" className="py-20 px-8 bg-[#0f0f0f]">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-5xl font-bold mb-12">Academic Projects</h2>
+          <motion.h2 
+            className="text-5xl font-bold mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            Academic Projects
+          </motion.h2>
           
           <div className="grid md:grid-cols-2 gap-8">
             {projects.map((project, index) => (
-              <div key={index} className="bg-[#1a1a1a] rounded-2xl p-8 hover:bg-[#222] transition-colors">
+              <motion.div 
+                key={index} 
+                className="bg-[#1a1a1a] rounded-2xl p-8 hover:bg-[#222] transition-colors"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ y: -5 }}
+              >
                 <div className="flex justify-between items-start mb-4">
                   <h3 className="text-xl font-semibold text-[#a8f5a8]">{project.title}</h3>
                   <span className="text-gray-500 text-sm">{project.year}</span>
@@ -206,30 +287,65 @@ export default function Home() {
                 <p className="text-gray-400 leading-relaxed text-sm">
                   {project.description}
                 </p>
-              </div>
+              </motion.div>
             ))}
           </div>
 
           {/* Seminars & Workshops */}
-          <div className="mt-16">
-            <h3 className="text-3xl font-bold mb-8">Seminars, Trainings & Workshops</h3>
+          <div id="seminars" className="mt-16">
+            <motion.h3 
+              className="text-3xl font-bold mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              Seminars, Trainings & Workshops
+            </motion.h3>
             <div className="space-y-4">
-              <div className="bg-[#1a1a1a] rounded-xl p-6">
+              <motion.div 
+                className="bg-[#1a1a1a] rounded-xl p-8 hover:bg-[#222] transition-colors"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                whileHover={{ x: 5 }}
+              >
                 <h4 className="text-lg font-semibold mb-2">Concourse: Charting New Horizons in Technology</h4>
                 <p className="text-gray-400 text-sm">College of Computing and Information Technology Student Council • 2025</p>
-              </div>
-              <div className="bg-[#1a1a1a] rounded-xl p-6">
+              </motion.div>
+              <motion.div 
+                className="bg-[#1a1a1a] rounded-xl p-8 hover:bg-[#222] transition-colors"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                whileHover={{ x: 5 }}
+              >
                 <h4 className="text-lg font-semibold mb-2">Navigating the Path to Academic Publishing in Computer Science</h4>
                 <p className="text-gray-400 text-sm">Computer Science Society • 2024</p>
-              </div>
-              <div className="bg-[#1a1a1a] rounded-xl p-6">
+              </motion.div>
+              <motion.div 
+                className="bg-[#1a1a1a] rounded-xl p-8 hover:bg-[#222] transition-colors"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
+                whileHover={{ x: 5 }}
+              >
                 <h4 className="text-lg font-semibold mb-2">Dev Showcase: Mastering Git & GitHub</h4>
                 <p className="text-gray-400 text-sm">GDG on Campus - National University - Manila • 2024</p>
-              </div>
-              <div className="bg-[#1a1a1a] rounded-xl p-6">
+              </motion.div>
+              <motion.div 
+                className="bg-[#1a1a1a] rounded-xl p-8 hover:bg-[#222] transition-colors"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4 }}
+                whileHover={{ x: 5 }}
+              >
                 <h4 className="text-lg font-semibold mb-2">Collab Plus: Optimizing Team Collaboration with Google Workspace</h4>
                 <p className="text-gray-400 text-sm">GDG on Campus - National University - Manila • 2024</p>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
@@ -238,10 +354,24 @@ export default function Home() {
       {/* Affiliations Section */}
       <section id="affiliations" className="py-20 px-8 bg-[#0f0f0f]">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-5xl font-bold mb-12">Affiliations</h2>
+          <motion.h2 
+            className="text-5xl font-bold mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            Affiliations
+          </motion.h2>
           
           <div className="space-y-6">
-            <div className="bg-[#1a1a1a] rounded-2xl p-8 hover:bg-[#222] transition-colors">
+            <motion.div 
+              className="bg-[#1a1a1a] rounded-2xl p-8 hover:bg-[#222] transition-colors"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              whileHover={{ y: -5 }}
+            >
               <div className="flex justify-between items-start mb-4">
                 <div>
                   <h3 className="text-2xl font-semibold mb-2">Treasurer</h3>
@@ -252,9 +382,16 @@ export default function Home() {
               <p className="text-gray-500 leading-relaxed">
                 Managing financial operations and budget allocation for the College of Computing and Information Technology Student Council.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="bg-[#1a1a1a] rounded-2xl p-8 hover:bg-[#222] transition-colors">
+            <motion.div 
+              className="bg-[#1a1a1a] rounded-2xl p-8 hover:bg-[#222] transition-colors"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              whileHover={{ y: -5 }}
+            >
               <div className="flex justify-between items-start mb-4">
                 <div>
                   <h3 className="text-2xl font-semibold mb-2">Office-in-Charge, Office of the Auditor</h3>
@@ -265,7 +402,7 @@ export default function Home() {
               <p className="text-gray-500 leading-relaxed">
                 Oversaw audit operations and ensured financial transparency and compliance within the student council.
               </p>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
