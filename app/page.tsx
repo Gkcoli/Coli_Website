@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 export default function Home() {
   const skills = [
-    { name: "Python", color: "bg-[#e8e5a0]", icon: "/py.png", isImage: true },
+    { name: "Python", color: "bg-[#e8e5a0]", icon: "/python.png", isImage: true },
     { name: "Java", color: "bg-[#a8c5d1]", icon: "/java.png", isImage: true },
     { name: "TensorFlow", color: "bg-[#d4d4d4]", icon: "/Tensorflow_logo.svg.webp", isImage: true },
     { name: "PyTorch", color: "bg-[#7ba7d1]", icon: "/pytorchh.png", isImage: true },
