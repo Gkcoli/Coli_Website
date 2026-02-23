@@ -14,6 +14,11 @@ export default function Home() {
 
   const projects = [
     {
+      title: "Data-Driven Analysis of Daily Stress Levels and the Effectiveness of Stress-Relief Activities",
+      year: "2026",
+      description: "The project focuses on analyzing personal stress data collected from a smartwatch to understand daily stress patterns and evaluate the effectiveness of various stress-relief activities."
+    },
+    {
       title: "Learning Through Play: Integer Damath AI",
       year: "2025",
       description: "Implemented and compared reinforcement learning algorithms (Q-Learning, Monte Carlo, and Dyna-Q) to develop intelligent agents for the educational game Integer Damath. Evaluated algorithm efficiency, learning speed, and decision-making performance."
