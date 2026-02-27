@@ -19,32 +19,38 @@ export default function Home() {
     {
       title: "Physics-Guided AI For Enhanced Heat Index Forecasting in the Philippine Context",
       year: "2026",
-      description: "Developed as a Data Engineer, this project involves collecting datasets via web scraping from X, Facebook LGU pages, and PAGASA official sources for machine learning and data analysis to improve heat index forecasting accuracy using physics-guided AI approaches."
+      description: "Developed as a Data Engineer, this project involves collecting datasets via web scraping from X, Facebook LGU pages, and PAGASA official sources for machine learning and data analysis to improve heat index forecasting accuracy using physics-guided AI approaches.",
+      technologies: ["Python", "Web Scraping", "Machine Learning"]
     },
     {
       title: "Data-Driven Analysis of Daily Stress Levels and the Effectiveness of Stress-Relief Activities",
       year: "2026",
-      description: "The project focuses on analyzing personal stress data collected from a smartwatch to understand daily stress patterns and evaluate the effectiveness of various stress-relief activities."
+      description: "The project focuses on analyzing personal stress data collected from a smartwatch to understand daily stress patterns and evaluate the effectiveness of various stress-relief activities.",
+      technologies: ["Python", "Pandas", "Data Analysis"]
     },
     {
       title: "Learning Through Play: Integer Damath AI",
       year: "2025",
-      description: "Implemented and compared reinforcement learning algorithms (Q-Learning, Monte Carlo, and Dyna-Q) to develop intelligent agents for the educational game Integer Damath. Evaluated algorithm efficiency, learning speed, and decision-making performance."
+      description: "Implemented and compared reinforcement learning algorithms (Q-Learning, Monte Carlo, and Dyna-Q) to develop intelligent agents for the educational game Integer Damath. Evaluated algorithm efficiency, learning speed, and decision-making performance.",
+      technologies: ["Python", "Reinforcement Learning", "Q-Learning"]
     },
     {
       title: "ArtDecode: CNN Art Style Classification",
       year: "2025",
-      description: "Engineered a computer vision model with 63.08% accuracy using custom Convolutional Neural Network (CNN) architectures in TensorFlow for classifying art styles using the WikiArt Dataset."
+      description: "Engineered a computer vision model with 63.08% accuracy using custom Convolutional Neural Network (CNN) architectures in TensorFlow for classifying art styles using the WikiArt Dataset.",
+      technologies: ["Python", "TensorFlow", "CNN"]
     },
     {
       title: "Flight Delay Prediction System",
       year: "2024",
-      description: "Developed a machine learning model to predict flight arrival delays using Random Forest Regression. Performed data preprocessing, feature selection, and exploratory data analysis to improve prediction accuracy."
+      description: "Developed a machine learning model to predict flight arrival delays using Random Forest Regression. Performed data preprocessing, feature selection, and exploratory data analysis to improve prediction accuracy.",
+      technologies: ["Python", "Random Forest", "Scikit-learn"]
     },
     {
       title: "Manufacturing Resource Planning (MRP) System",
       year: "2024",
-      description: "A centralized system designed to streamline production planning, inventory control, and procurement processes for ABC Manufacturing, optimizing resource allocation and reducing material shortages."
+      description: "A centralized system designed to streamline production planning, inventory control, and procurement processes for ABC Manufacturing, optimizing resource allocation and reducing material shortages.",
+      technologies: ["Java", "Database", "Business Logic"]
     }
   ];
 
@@ -67,16 +73,16 @@ export default function Home() {
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-8">
               <a href="#education" className="text-sm text-gray-400 hover:text-[#a8f5a8] transition-all duration-300 hover:scale-105">
-                education
+                Education
               </a>
               <a href="#projects" className="text-sm text-gray-400 hover:text-[#a8f5a8] transition-all duration-300 hover:scale-105">
-                projects
+                Projects
               </a>
               <a href="#seminars" className="text-sm text-gray-400 hover:text-[#a8f5a8] transition-all duration-300 hover:scale-105">
-                seminars
+                Seminars
               </a>
               <a href="#affiliations" className="text-sm text-gray-400 hover:text-[#a8f5a8] transition-all duration-300 hover:scale-105">
-                affiliations
+                Affiliations
               </a>
               
               {/* Social Icons */}
@@ -393,9 +399,16 @@ export default function Home() {
                   <h3 className="text-base sm:text-lg md:text-xl font-semibold text-[#a8f5a8]">{project.title}</h3>
                   <span className="text-gray-500 text-xs sm:text-sm flex-shrink-0">{project.year}</span>
                 </div>
-                <p className="text-gray-400 leading-relaxed text-xs sm:text-sm">
+                <p className="text-gray-400 leading-relaxed text-xs sm:text-sm mb-4">
                   {project.description}
                 </p>
+                <div className="flex flex-wrap gap-2">
+                  {project.technologies.map((tech, techIndex) => (
+                    <span key={techIndex} className="text-xs bg-[#a8f5a8] text-black px-3 py-1 rounded-full font-medium">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
               </motion.div>
             ))}
           </div>
