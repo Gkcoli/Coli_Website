@@ -20,13 +20,13 @@ export default function Home() {
       title: "Physics-Guided AI For Enhanced Heat Index Forecasting in the Philippine Context",
       year: "2026",
       description: "Developed as a Data Engineer, this project involves collecting datasets via web scraping from X, Facebook LGU pages, and PAGASA official sources for machine learning and data analysis to improve heat index forecasting accuracy using physics-guided AI approaches.",
-      technologies: ["Python", "Web Scraping", "Machine Learning"]
+      technologies: ["Python", "Web Scraping", "Machine Learning", "React JS"]
     },
     {
       title: "Data-Driven Analysis of Daily Stress Levels and the Effectiveness of Stress-Relief Activities",
       year: "2026",
       description: "The project focuses on analyzing personal stress data collected from a smartwatch to understand daily stress patterns and evaluate the effectiveness of various stress-relief activities.",
-      technologies: ["Python", "Pandas", "Data Analysis"]
+      technologies: ["Python", "Pandas", "Data Analysis", "Matplotlib", "Seaborn"]
     },
     {
       title: "Learning Through Play: Integer Damath AI",
