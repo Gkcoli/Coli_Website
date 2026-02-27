@@ -141,28 +141,28 @@ export default function Home() {
                   className="block text-gray-400 hover:text-[#a8f5a8] transition-colors py-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  education
+                  Education
                 </a>
                 <a 
                   href="#projects" 
                   className="block text-gray-400 hover:text-[#a8f5a8] transition-colors py-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  projects
+                  Projects
                 </a>
                 <a 
                   href="#seminars" 
                   className="block text-gray-400 hover:text-[#a8f5a8] transition-colors py-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  seminars
+                  Seminars
                 </a>
                 <a 
                   href="#affiliations" 
                   className="block text-gray-400 hover:text-[#a8f5a8] transition-colors py-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  affiliations
+                  Affiliations
                 </a>
                 
                 {/* Mobile Social Icons */}
