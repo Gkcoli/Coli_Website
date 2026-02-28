@@ -20,19 +20,22 @@ export default function Home() {
       title: "Physics-Guided AI For Enhanced Heat Index Forecasting in the Philippine Context",
       year: "2026",
       description: "Developed as a Data Engineer, this project involves collecting datasets via web scraping from X, Facebook LGU pages, and PAGASA official sources for machine learning and data analysis to improve heat index forecasting accuracy using physics-guided AI approaches.",
-      technologies: ["Python", "Web Scraping", "Machine Learning", "React JS"]
+      technologies: ["Python", "Web Scraping", "Machine Learning", "React JS"],
+      github_url: "https://github.com/machiwao/Meteorologically-aware-AI-for-Enhanced-Heat-Index-Forecasting-in-the-Philippine-Context"
     },
     {
       title: "Data-Driven Analysis of Daily Stress Levels and the Effectiveness of Stress-Relief Activities",
       year: "2026",
       description: "The project focuses on analyzing personal stress data collected from a smartwatch to understand daily stress patterns and evaluate the effectiveness of various stress-relief activities.",
-      technologies: ["Python", "Pandas", "Data Analysis", "Matplotlib", "Seaborn"]
+      technologies: ["Python", "Pandas", "Data Analysis", "Matplotlib", "Seaborn"],
+      github_url: "https://github.com/Gkcoli/Data-Driven-Analysis-of-Daily-Stress-Levels-and-the-Effectiveness-of-Stress-Relief-Activities"
     },
     {
       title: "Learning Through Play: Integer Damath AI",
       year: "2025",
       description: "Implemented and compared reinforcement learning algorithms (Q-Learning, Monte Carlo, and Dyna-Q) to develop intelligent agents for the educational game Integer Damath. Evaluated algorithm efficiency, learning speed, and decision-making performance.",
-      technologies: ["Python", "Reinforcement Learning", "Q-Learning"]
+      technologies: ["Python", "Reinforcement Learning", "Q-Learning"],
+      github_url: "https://github.com/machiwao/Learning-Through-Play-Evaluating-Reinforcement-Learning-Algorithms-in-Integer-Damath"
     },
     {
       title: "ArtDecode: CNN Art Style Classification",
@@ -44,7 +47,8 @@ export default function Home() {
       title: "Flight Delay Prediction System",
       year: "2024",
       description: "Developed a machine learning model to predict flight arrival delays using Random Forest Regression. Performed data preprocessing, feature selection, and exploratory data analysis to improve prediction accuracy.",
-      technologies: ["Python", "Random Forest", "Scikit-learn"]
+      technologies: ["Python", "Random Forest", "Scikit-learn"],
+      github_url: "https://github.com/Gkcoli/Predicting-Flight-Delays-A-Machine-Learning-Approach/tree/main"
     },
     {
       title: "Manufacturing Resource Planning (MRP) System",
@@ -402,13 +406,26 @@ export default function Home() {
                 <p className="text-gray-400 leading-relaxed text-xs sm:text-sm mb-4">
                   {project.description}
                 </p>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.map((tech, techIndex) => (
                     <span key={techIndex} className="text-xs bg-[#a8f5a8] text-black px-3 py-1 rounded-full font-medium">
                       {tech}
                     </span>
                   ))}
                 </div>
+                {project.github_url && (
+                  <a
+                    href={project.github_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-[#a8f5a8] hover:text-white transition-colors"
+                  >
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    View on GitHub
+                  </a>
+                )}
               </motion.div>
             ))}
           </div>
