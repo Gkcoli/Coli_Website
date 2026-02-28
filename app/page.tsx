@@ -17,44 +17,39 @@ export default function Home() {
 
   const projects = [
     {
-      title: "Physics-Guided AI For Enhanced Heat Index Forecasting in the Philippine Context",
+      title: "Data-Driven Analysis of Daily Stress Levels and Stress-Relief Activities",
       year: "2026",
-      description: "Developed as a Data Engineer, this project involves collecting datasets via web scraping from X, Facebook LGU pages, and PAGASA official sources for machine learning and data analysis to improve heat index forecasting accuracy using physics-guided AI approaches.",
-      technologies: ["Python", "Web Scraping", "Machine Learning", "React JS"],
-      github_url: "https://github.com/machiwao/Meteorologically-aware-AI-for-Enhanced-Heat-Index-Forecasting-in-the-Philippine-Context"
-    },
-    {
-      title: "Data-Driven Analysis of Daily Stress Levels and the Effectiveness of Stress-Relief Activities",
-      year: "2026",
-      description: "The project focuses on analyzing personal stress data collected from a smartwatch to understand daily stress patterns and evaluate the effectiveness of various stress-relief activities.",
-      technologies: ["Python", "Pandas", "Data Analysis", "Matplotlib", "Seaborn"],
+      description: "Analyzed smartwatch-generated stress data to identify patterns and correlations between stress levels and daily activities. Generated visual insights through time-series analysis to identify effective stress-relief activities and peak stress periods.",
+      technologies: ["Python", "Pandas", "Matplotlib", "NumPy", "Jupyter Notebook"],
       github_url: "https://github.com/Gkcoli/Data-Driven-Analysis-of-Daily-Stress-Levels-and-the-Effectiveness-of-Stress-Relief-Activities"
     },
     {
-      title: "Learning Through Play: Integer Damath AI",
+      title: "Meteorologically Aware AI for Enhanced Heat-Index Forecasting in the Philippine-Context",
+      year: "2026",
+      description: "As a Data Engineer, collected and structured heat index datasets by scraping PAGASA benchmarks, LGU Facebook pages, and X sources to build a clean dataset for model training. Enabled reliable heat index forecasting across 23 PAGASA stations with strong performance metrics (RMSE = 2.35°C, MAE = 1.74°C, R² = 0.82).",
+      technologies: ["Python", "Pandas", "NumPy", "XGBoost", "Google Earth Engine", "Jupyter Notebook"],
+      github_url: "https://github.com/machiwao/Meteorologically-aware-AI-for-Enhanced-Heat-Index-Forecasting-in-the-Philippine-Context"
+    },
+    {
+      title: "ArtDecode: Leveraging Convolutional Neural Networks for Multi-Class Art Style Classification",
       year: "2025",
-      description: "Implemented and compared reinforcement learning algorithms (Q-Learning, Monte Carlo, and Dyna-Q) to develop intelligent agents for the educational game Integer Damath. Evaluated algorithm efficiency, learning speed, and decision-making performance.",
-      technologies: ["Python", "Reinforcement Learning", "Q-Learning"],
+      description: "Designed and trained a custom Convolutional Neural Network (CNN) to classify art styles using the WikiArt dataset. Achieved 63.08% classification accuracy across multiple art styles through systematic model tuning and dataset preprocessing.",
+      technologies: ["Python", "TensorFlow", "Keras", "NumPy", "Matplotlib"],
+      github_url: "https://github.com/machiwao/ArtDecode-Leveraging-Convolutional-Neural-Networks-for-Multi-Class-Art-Style-Classification"
+    },
+    {
+      title: "Learning Through Play: Evaluating Reinforcement Learning Algorithms in Integer Damath",
+      year: "2025",
+      description: "Implemented reinforcement learning agents using Q-Learning, Monte Carlo, and Dyna-Q to simulate intelligent gameplay strategies in Integer Damath. Evaluated algorithm efficiency and learning performance to compare learning speed and decision accuracy across the three RL approaches.",
+      technologies: ["Python", "NumPy", "Pandas", "Matplotlib"],
       github_url: "https://github.com/machiwao/Learning-Through-Play-Evaluating-Reinforcement-Learning-Algorithms-in-Integer-Damath"
     },
     {
-      title: "ArtDecode: CNN Art Style Classification",
-      year: "2025",
-      description: "Engineered a computer vision model with 63.08% accuracy using custom Convolutional Neural Network (CNN) architectures in TensorFlow for classifying art styles using the WikiArt Dataset.",
-      technologies: ["Python", "TensorFlow", "CNN"]
-    },
-    {
-      title: "Flight Delay Prediction System",
+      title: "Predicting Flight Delays: Using Regression Analysis",
       year: "2024",
-      description: "Developed a machine learning model to predict flight arrival delays using Random Forest Regression. Performed data preprocessing, feature selection, and exploratory data analysis to improve prediction accuracy.",
-      technologies: ["Python", "Random Forest", "Scikit-learn"],
+      description: "Built a machine learning model using Random Forest Regression to predict flight arrival delays based on operational and scheduling features. Achieved strong predictive performance through systematic feature selection and hyperparameter tuning.",
+      technologies: ["Python", "Scikit-learn", "Pandas", "Matplotlib", "Jupyter Notebook"],
       github_url: "https://github.com/Gkcoli/Predicting-Flight-Delays-A-Machine-Learning-Approach/tree/main"
-    },
-    {
-      title: "Manufacturing Resource Planning (MRP) System",
-      year: "2024",
-      description: "A centralized system designed to streamline production planning, inventory control, and procurement processes for ABC Manufacturing, optimizing resource allocation and reducing material shortages.",
-      technologies: ["Java", "Database", "Business Logic"]
     }
   ];
 
