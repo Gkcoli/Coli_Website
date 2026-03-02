@@ -9,6 +9,7 @@ export default function Home() {
   const projects = [
     {
       title: "Data-Driven Analysis of Daily Stress Levels and Stress-Relief Activities",
+      role: "Data Analyst",
       year: "2026",
       description: "Analyzed smartwatch-generated stress data to identify patterns and correlations between stress levels and daily activities. Generated visual insights through time-series analysis to identify effective stress-relief activities and peak stress periods.",
       technologies: ["Python", "Pandas", "Matplotlib", "NumPy", "Jupyter Notebook"],
@@ -16,13 +17,15 @@ export default function Home() {
     },
     {
       title: "Meteorologically Aware AI for Enhanced Heat-Index Forecasting in the Philippine-Context",
+      role: "Data Engineer",
       year: "2026",
-      description: "As a Data Engineer, collected and structured heat index datasets by scraping PAGASA benchmarks, LGU Facebook pages, and X sources to build a clean dataset for model training. Enabled reliable heat index forecasting across 23 PAGASA stations with strong performance metrics (RMSE = 2.35°C, MAE = 1.74°C, R² = 0.82).",
+      description: "Collected and structured heat index datasets by scraping PAGASA benchmarks, LGU Facebook pages, and X sources to build a clean dataset for model training. Enabled reliable heat index forecasting across 23 PAGASA stations with strong performance metrics (RMSE = 2.35°C, MAE = 1.74°C, R² = 0.82).",
       technologies: ["Python", "Pandas", "NumPy", "XGBoost", "Google Earth Engine", "Jupyter Notebook"],
       github_url: "https://github.com/machiwao/Meteorologically-aware-AI-for-Enhanced-Heat-Index-Forecasting-in-the-Philippine-Context"
     },
     {
       title: "ArtDecode: Leveraging Convolutional Neural Networks for Multi-Class Art Style Classification",
+      role: "Machine Learning Engineer",
       year: "2025",
       description: "Designed and trained a custom Convolutional Neural Network (CNN) to classify art styles using the WikiArt dataset. Achieved 63.08% classification accuracy across multiple art styles through systematic model tuning and dataset preprocessing.",
       technologies: ["Python", "TensorFlow", "Keras", "NumPy", "Matplotlib"],
@@ -30,6 +33,7 @@ export default function Home() {
     },
     {
       title: "Learning Through Play: Evaluating Reinforcement Learning Algorithms in Integer Damath",
+      role: "Reinforcement Learning Researcher",
       year: "2025",
       description: "Implemented reinforcement learning agents using Q-Learning, Monte Carlo, and Dyna-Q to simulate intelligent gameplay strategies in Integer Damath. Evaluated algorithm efficiency and learning performance to compare learning speed and decision accuracy across the three RL approaches.",
       technologies: ["Python", "NumPy", "Pandas", "Matplotlib"],
@@ -37,6 +41,7 @@ export default function Home() {
     },
     {
       title: "Predicting Flight Delays: Using Regression Analysis",
+      role: "Machine Learning Engineer",
       year: "2024",
       description: "Built a machine learning model using Random Forest Regression to predict flight arrival delays based on operational and scheduling features. Achieved strong predictive performance through systematic feature selection and hyperparameter tuning.",
       technologies: ["Python", "Scikit-learn", "Pandas", "Matplotlib", "Jupyter Notebook"],
@@ -569,6 +574,9 @@ export default function Home() {
                   <h3 className="text-base sm:text-lg md:text-xl font-semibold text-[#a8f5a8]">{project.title}</h3>
                   <span className="text-gray-500 text-xs sm:text-sm flex-shrink-0">{project.year}</span>
                 </div>
+                <p className="text-xs sm:text-sm text-gray-300 mb-2">
+                  Role: <span className="font-medium text-white">{project.role}</span>
+                </p>
                 <p className="text-gray-400 leading-relaxed text-xs sm:text-sm mb-4">
                   {project.description}
                 </p>
