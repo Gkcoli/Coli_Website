@@ -33,9 +33,9 @@ export default function Home() {
     },
     {
       title: "Learning Through Play: Evaluating Reinforcement Learning Algorithms in Integer Damath",
-      role: "Reinforcement Learning Researcher",
+      role: "Machine Learning Engineer",
       year: "2025",
-      description: "Implemented reinforcement learning agents using Q-Learning, Monte Carlo, and Dyna-Q to simulate intelligent gameplay strategies in Integer Damath. Evaluated algorithm efficiency and learning performance to compare learning speed and decision accuracy across the three RL approaches.",
+      description: "Developed and implemented reinforcement learning agents including Q-Learning, Monte Carlo, and a custom Dyna-Q model to simulate intelligent gameplay strategies in Integer Damath. Created the Dyna-Q algorithm from scratch and evaluated algorithm efficiency and learning performance to compare learning speed and decision accuracy across the three RL approaches.",
       technologies: ["Python", "NumPy", "Pandas", "Matplotlib"],
       github_url: "https://github.com/machiwao/Learning-Through-Play-Evaluating-Reinforcement-Learning-Algorithms-in-Integer-Damath"
     },
