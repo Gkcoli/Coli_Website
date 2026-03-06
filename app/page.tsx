@@ -9,7 +9,7 @@ export default function Home() {
   const projects = [
     {
       title: "Data-Driven Analysis of Daily Stress Levels and Stress-Relief Activities",
-      role: "Data Analyst",
+      role: "Data Scientist",
       year: "2026",
       description: "Analyzed smartwatch-generated stress data to identify patterns and correlations between stress levels and daily activities. Generated visual insights through time-series analysis to identify effective stress-relief activities and peak stress periods.",
       technologies: ["Python", "Pandas", "Matplotlib", "NumPy", "Jupyter Notebook"],
