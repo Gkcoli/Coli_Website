@@ -23,3 +23,60 @@ body {
   color: var(--foreground);
   font-family: var(--font-inter), sans-serif;
 }
+
+.theme-light {
+  --surface-page: #f3f7f1;
+  --surface-card: #ffffff;
+  --surface-card-hover: #edf4e8;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --border-soft: #d4e0cf;
+  color: var(--text-primary);
+}
+
+.theme-light.bg-\[\#0f0f0f\],
+.theme-light .bg-\[\#0f0f0f\] {
+  background-color: var(--surface-page) !important;
+}
+
+.theme-light .bg-\[\#0f0f0f\]\/95 {
+  background-color: color-mix(in srgb, var(--surface-page) 95%, transparent) !important;
+}
+
+.theme-light .bg-\[\#0f0f0f\]\/98 {
+  background-color: color-mix(in srgb, var(--surface-page) 98%, transparent) !important;
+}
+
+.theme-light .bg-\[\#1a1a1a\] {
+  background-color: var(--surface-card) !important;
+}
+
+.theme-light .hover\:bg-\[\#222\]:hover {
+  background-color: var(--surface-card-hover) !important;
+}
+
+.theme-light.text-white,
+.theme-light .text-white {
+  color: var(--text-primary) !important;
+}
+
+.theme-light .text-gray-400,
+.theme-light .text-gray-300,
+.theme-light .text-gray-200 {
+  color: var(--text-secondary) !important;
+}
+
+.theme-light .text-gray-500 {
+  color: var(--text-muted) !important;
+}
+
+.theme-light .border-gray-800,
+.theme-light .border-gray-800\/50,
+.theme-light .border-gray-700 {
+  border-color: var(--border-soft) !important;
+}
+
+.theme-light .hover\:bg-gray-800\/50:hover {
+  background-color: var(--surface-card-hover) !important;
+}
