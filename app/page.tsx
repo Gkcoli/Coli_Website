@@ -588,7 +588,7 @@ export default function Home() {
             >
               <h3 className="text-lg sm:text-xl md:text-2xl font-semibold mb-2">BS Computer Science - Machine Learning</h3>
               <p className="text-sm sm:text-base text-gray-400 mb-2">National University - Manila • 2022 - Present</p>
-              <p className="text-xs sm:text-sm text-gray-500">Specializing in Machine Learning and Artificial Intelligence</p>
+              <p className="text-xs sm:text-sm text-gray-500">Specializing in Machine Learning</p>
             </motion.div>
             
             <motion.div 
