@@ -350,7 +350,7 @@ export default function Home() {
           >
             <div className="space-y-4 text-sm sm:text-base text-gray-300 leading-relaxed">
               <p>
-                I&apos;m a Computer Science student with a strong interest in machine learning and software development. I enjoy building projects that turn ideas into real applications and help solve practical problems.
+                I&apos;m a Computer Science student with a strong interest in machine learning | ai automation | data science. I enjoy building projects and aspire to become a machine learning engineer/data scientist in the future.
               </p>
               <p>
                 My experience includes developing machine learning models, web applications, and AI-based systems as part of my academic and personal projects.
