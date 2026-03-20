@@ -297,7 +297,7 @@ export default function Home() {
               
               <div className="space-y-4 text-gray-400 leading-relaxed text-sm sm:text-base">
                 <p>
-                  Computer Science student interested in machine learning and software development. I enjoy building practical projects and continuously learning new technologies.
+                  Computer Science student focused on machine learning and data science, with a particular interest in building data-driven systems that address real-world, socially relevant problems.
                 </p>
                 <p className="text-xs sm:text-sm">
                   📧 gkcolinares@gmail.com | 📱 0956-253-5772
@@ -350,13 +350,13 @@ export default function Home() {
           >
             <div className="space-y-4 text-sm sm:text-base text-gray-300 leading-relaxed">
               <p>
-                I&apos;m a Computer Science student with a strong interest in machine learning | ai automation | data science. I enjoy building projects and aspire to become a machine learning engineer/data scientist in the future.
+                I&apos;m a Computer Science student with a growing practice in machine learning and data science, focused on turning messy data into useful, human-centered insights and tools.
               </p>
               <p>
-                My experience includes developing machine learning models, web applications, and AI-based systems as part of my academic and personal projects.
+                I care about applied ML, analytics, and AI that can support communities and public-impact work, especially as newer generative and data-centric methods become part of everyday systems.
               </p>
               <p>
-                I am currently looking for internship opportunities where I can apply my skills and continue learning from real-world experience.
+                Right now I&apos;m focused on deepening my machine learning and data science practice through projects, collaborations, and experiments that move from raw data to real-world impact.
               </p>
             </div>
           </motion.div>
