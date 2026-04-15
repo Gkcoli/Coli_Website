@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {
   SiAndroidstudio,
   SiFigma,
@@ -20,7 +20,8 @@ import {
 function SkillsCarousel() {
   const [current, setCurrent] = useState(0);
   const [autoplay, setAutoplay] = useState(true);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const touchStartX = useRef<number | null>(null);
+  const touchDeltaX = useRef(0);
 
   const skillsData = [
     {
@@ -86,74 +87,89 @@ function SkillsCarousel() {
     setCurrent((prev) => (prev + 1) % skillsData.length);
   };
 
+  const handleTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
+    touchStartX.current = event.touches[0].clientX;
+    touchDeltaX.current = 0;
+    setAutoplay(false);
+  };
+
+  const handleTouchMove = (event: React.TouchEvent<HTMLDivElement>) => {
+    if (touchStartX.current === null) return;
+    touchDeltaX.current = event.touches[0].clientX - touchStartX.current;
+  };
+
+  const handleTouchEnd = () => {
+    const swipeThreshold = 48;
+
+    if (touchDeltaX.current > swipeThreshold) {
+      setCurrent((prev) => (prev - 1 + skillsData.length) % skillsData.length);
+    } else if (touchDeltaX.current < -swipeThreshold) {
+      setCurrent((prev) => (prev + 1) % skillsData.length);
+    }
+
+    touchStartX.current = null;
+    touchDeltaX.current = 0;
+    setAutoplay(true);
+  };
+
   return (
     <div className="w-full">
       <div
-        ref={containerRef}
         className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden"
         onMouseEnter={() => setAutoplay(false)}
         onMouseLeave={() => setAutoplay(true)}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
       >
         {/* Carousel Container */}
-        <div className="relative w-full h-[34rem] sm:h-[36rem] md:h-[32rem] lg:h-[30rem]">
-          <AnimatePresence mode="wait">
+        <div className="relative w-full min-h-[34rem] sm:min-h-[36rem] md:min-h-[32rem] lg:min-h-[30rem]">
+          <div
+            className="flex w-full h-full will-change-transform transition-transform duration-[900ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
+            style={{ transform: `translate3d(-${current * 100}%, 0, 0)` }}
+          >
             {skillsData.map((skill, idx) => (
-              idx === current && (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.5 }}
-                  className="absolute inset-0"
+              <div key={idx} className="relative min-w-full">
+                {/* Glassmorphism Card */}
+                <div
+                  className={`absolute inset-0 w-full h-full rounded-3xl border backdrop-blur-xl ${skill.borderColor} bg-gradient-to-br ${skill.color} px-4 sm:px-6 lg:px-8 flex flex-col justify-between relative overflow-hidden group ${skill.title === 'Tools' ? 'py-5 md:py-6' : 'py-6 md:py-8'}`}
                 >
-                  {/* Glassmorphism Card */}
-                  <div
-                    className={`absolute inset-0 w-full h-full rounded-3xl border backdrop-blur-xl ${skill.borderColor} bg-gradient-to-br ${skill.color} px-4 sm:px-6 lg:px-8 flex flex-col justify-between relative overflow-hidden group ${skill.title === 'Tools' ? 'py-5 md:py-6' : 'py-6 md:py-8'}`}
-                  >
-                    {/* Animated Border Glow */}
-                    <div className={`absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none bg-gradient-to-r ${skill.color}`} />
+                  {/* Animated Border Glow */}
+                  <div className={`absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none bg-gradient-to-r ${skill.color}`} />
 
-                    {/* Content */}
-                    <div className="relative z-10">
-                      <h3 className={`text-3xl md:text-4xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent ${skill.title === 'Tools' ? 'mb-5 md:mb-6' : 'mb-8'}`}>
-                        {skill.title}
-                      </h3>
+                  {/* Content */}
+                  <div className="relative z-10">
+                    <h3 className={`text-3xl md:text-4xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent ${skill.title === 'Tools' ? 'mb-5 md:mb-6' : 'mb-8'}`}>
+                      {skill.title}
+                    </h3>
 
-                      <div className={`grid grid-cols-2 md:grid-cols-3 ${skill.title === 'Tools' ? 'gap-3 md:gap-4' : 'gap-4 md:gap-5'}`}>
-                        {skill.items.map((item, itemIdx) => (
-                          <motion.div
-                            key={itemIdx}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: itemIdx * 0.1 }}
-                            className="group/item"
-                          >
-                            <div className="bg-white/5 backdrop-blur-md rounded-2xl p-3 md:p-4 border border-white/10 hover:border-white/30 transition-all duration-300 transform hover:scale-105 hover:shadow-lg cursor-pointer">
-                              <div className="flex items-center justify-center h-10 md:h-12 mb-2 md:mb-3">
-                                {item.icon.startsWith('/') ? (
-                                  <img
-                                    src={item.icon}
-                                    alt={item.name}
-                                    className="h-8 w-8 md:h-10 md:w-10 object-contain opacity-80 group-hover/item:opacity-100 transition-opacity"
-                                  />
-                                ) : (
-                                  <IconComponent icon={item.icon} />
-                                )}
-                              </div>
-                              <p className="text-[11px] md:text-sm text-gray-300 text-center font-medium leading-tight">
-                                {item.name}
-                              </p>
+                    <div className={`grid grid-cols-2 md:grid-cols-3 ${skill.title === 'Tools' ? 'gap-3 md:gap-4' : 'gap-4 md:gap-5'}`}>
+                      {skill.items.map((item, itemIdx) => (
+                        <div key={itemIdx} className="group/item">
+                          <div className="bg-white/5 backdrop-blur-md rounded-2xl p-3 md:p-4 border border-white/10 hover:border-white/30 transition-all duration-300 transform hover:scale-105 hover:shadow-lg cursor-pointer">
+                            <div className="flex items-center justify-center h-10 md:h-12 mb-2 md:mb-3">
+                              {item.icon.startsWith('/') ? (
+                                <img
+                                  src={item.icon}
+                                  alt={item.name}
+                                  className="h-8 w-8 md:h-10 md:w-10 object-contain opacity-80 group-hover/item:opacity-100 transition-opacity"
+                                />
+                              ) : (
+                                <IconComponent icon={item.icon} />
+                              )}
                             </div>
-                          </motion.div>
-                        ))}
-                      </div>
+                            <p className="text-[11px] md:text-sm text-gray-300 text-center font-medium leading-tight">
+                              {item.name}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   </div>
-                </motion.div>
-              )
+                </div>
+              </div>
             ))}
-          </AnimatePresence>
+          </div>
         </div>
 
         {/* Navigation Arrows */}
@@ -162,10 +178,11 @@ function SkillsCarousel() {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             onClick={handlePrev}
-            className="pointer-events-auto p-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all duration-300 text-white"
+            className="pointer-events-auto h-11 px-4 rounded-xl bg-black/25 backdrop-blur-md border border-white/20 hover:bg-black/40 transition-all duration-300 text-white font-medium inline-flex items-center gap-2"
+            aria-label="Previous skills section"
           >
             <svg
-              className="w-6 h-6"
+              className="w-5 h-5"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -177,16 +194,19 @@ function SkillsCarousel() {
                 d="M15 19l-7-7 7-7"
               />
             </svg>
+            <span className="hidden sm:inline">Previous</span>
           </motion.button>
 
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             onClick={handleNext}
-            className="pointer-events-auto p-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all duration-300 text-white"
+            className="pointer-events-auto h-11 px-4 rounded-xl bg-black/25 backdrop-blur-md border border-white/20 hover:bg-black/40 transition-all duration-300 text-white font-medium inline-flex items-center gap-2"
+            aria-label="Next skills section"
           >
+            <span className="hidden sm:inline">Next</span>
             <svg
-              className="w-6 h-6"
+              className="w-5 h-5"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -200,26 +220,6 @@ function SkillsCarousel() {
             </svg>
           </motion.button>
         </div>
-      </div>
-
-      {/* Indicator Dots */}
-      <div className="flex justify-center gap-3 mt-8">
-        {skillsData.map((_, idx) => (
-          <motion.button
-            key={idx}
-            onClick={() => {
-              setAutoplay(false);
-              setCurrent(idx);
-            }}
-            className={`rounded-full transition-all duration-300 ${
-              idx === current
-                ? 'bg-gradient-to-r from-green-500 via-blue-500 to-purple-500 w-8 h-2'
-                : 'bg-gray-600 hover:bg-gray-500 w-2 h-2'
-            }`}
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ scale: 0.95 }}
-          />
-        ))}
       </div>
     </div>
   );
