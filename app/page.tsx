@@ -1,7 +1,281 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import {
+  SiAndroidstudio,
+  SiFigma,
+  SiGit,
+  SiGithub,
+  SiKotlin,
+  SiOpencv,
+  SiPhp,
+  SiReact,
+  SiScikitlearn,
+  SiVercel,
+  SiYii,
+} from 'react-icons/si';
+
+// Skills Carousel Component
+function SkillsCarousel() {
+  const [current, setCurrent] = useState(0);
+  const [autoplay, setAutoplay] = useState(true);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const skillsData = [
+    {
+      title: 'Languages',
+      color: 'from-green-500/20 to-emerald-500/20',
+      borderColor: 'border-green-500/30',
+      glowColor: 'shadow-green-500/20',
+      items: [
+        { name: 'Python', icon: '/python.png' },
+        { name: 'Java', icon: '/java.png' },
+        { name: 'JavaScript', icon: '/javascript.png' },
+        { name: 'SQL', icon: '/sql.png' },
+        { name: 'PHP', icon: 'php' },
+        { name: 'Kotlin', icon: 'kotlin' },
+      ],
+    },
+    {
+      title: 'Technologies',
+      color: 'from-blue-500/20 to-cyan-500/20',
+      borderColor: 'border-blue-500/30',
+      glowColor: 'shadow-blue-500/20',
+      items: [
+        { name: 'Machine Learning', icon: 'ml' },
+        { name: 'TensorFlow', icon: '/Tensorflow_logo.svg.webp' },
+        { name: 'Scikit-learn', icon: 'sklearn' },
+        { name: 'OpenCV', icon: 'cv' },
+        { name: 'React', icon: 'react' },
+        { name: 'Node.js', icon: '/nodejs.png' },
+      ],
+    },
+    {
+      title: 'Tools',
+      color: 'from-purple-500/20 to-pink-500/20',
+      borderColor: 'border-purple-500/30',
+      glowColor: 'shadow-purple-500/20',
+      items: [
+        { name: 'Git', icon: 'git' },
+        { name: 'GitHub', icon: 'github' },
+        { name: 'VS Code', icon: '/vscode.png' },
+        { name: 'Vercel', icon: 'vercel' },
+        { name: 'Yii2', icon: 'yii2' },
+        { name: 'Figma', icon: 'figma' },
+        { name: 'Android Studio', icon: 'android' },
+      ],
+    },
+  ];
+
+  useEffect(() => {
+    if (!autoplay) return;
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % skillsData.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [autoplay, skillsData.length]);
+
+  const handlePrev = () => {
+    setAutoplay(false);
+    setCurrent((prev) => (prev - 1 + skillsData.length) % skillsData.length);
+  };
+
+  const handleNext = () => {
+    setAutoplay(false);
+    setCurrent((prev) => (prev + 1) % skillsData.length);
+  };
+
+  return (
+    <div className="w-full">
+      <div
+        ref={containerRef}
+        className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden"
+        onMouseEnter={() => setAutoplay(false)}
+        onMouseLeave={() => setAutoplay(true)}
+      >
+        {/* Carousel Container */}
+        <div className="relative w-full h-[34rem] sm:h-[36rem] md:h-[32rem] lg:h-[30rem]">
+          <AnimatePresence mode="wait">
+            {skillsData.map((skill, idx) => (
+              idx === current && (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.5 }}
+                  className="absolute inset-0"
+                >
+                  {/* Glassmorphism Card */}
+                  <div
+                    className={`absolute inset-0 w-full h-full rounded-3xl border backdrop-blur-xl ${skill.borderColor} bg-gradient-to-br ${skill.color} px-4 sm:px-6 lg:px-8 flex flex-col justify-between relative overflow-hidden group ${skill.title === 'Tools' ? 'py-5 md:py-6' : 'py-6 md:py-8'}`}
+                  >
+                    {/* Animated Border Glow */}
+                    <div className={`absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none bg-gradient-to-r ${skill.color}`} />
+
+                    {/* Content */}
+                    <div className="relative z-10">
+                      <h3 className={`text-3xl md:text-4xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent ${skill.title === 'Tools' ? 'mb-5 md:mb-6' : 'mb-8'}`}>
+                        {skill.title}
+                      </h3>
+
+                      <div className={`grid grid-cols-2 md:grid-cols-3 ${skill.title === 'Tools' ? 'gap-3 md:gap-4' : 'gap-4 md:gap-5'}`}>
+                        {skill.items.map((item, itemIdx) => (
+                          <motion.div
+                            key={itemIdx}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: itemIdx * 0.1 }}
+                            className="group/item"
+                          >
+                            <div className="bg-white/5 backdrop-blur-md rounded-2xl p-3 md:p-4 border border-white/10 hover:border-white/30 transition-all duration-300 transform hover:scale-105 hover:shadow-lg cursor-pointer">
+                              <div className="flex items-center justify-center h-10 md:h-12 mb-2 md:mb-3">
+                                {item.icon.startsWith('/') ? (
+                                  <img
+                                    src={item.icon}
+                                    alt={item.name}
+                                    className="h-8 w-8 md:h-10 md:w-10 object-contain opacity-80 group-hover/item:opacity-100 transition-opacity"
+                                  />
+                                ) : (
+                                  <IconComponent icon={item.icon} />
+                                )}
+                              </div>
+                              <p className="text-[11px] md:text-sm text-gray-300 text-center font-medium leading-tight">
+                                {item.name}
+                              </p>
+                            </div>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              )
+            ))}
+          </AnimatePresence>
+        </div>
+
+        {/* Navigation Arrows */}
+        <div className="absolute inset-0 flex items-center justify-between px-4 pointer-events-none">
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={handlePrev}
+            className="pointer-events-auto p-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all duration-300 text-white"
+          >
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
+          </motion.button>
+
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={handleNext}
+            className="pointer-events-auto p-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all duration-300 text-white"
+          >
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </motion.button>
+        </div>
+      </div>
+
+      {/* Indicator Dots */}
+      <div className="flex justify-center gap-3 mt-8">
+        {skillsData.map((_, idx) => (
+          <motion.button
+            key={idx}
+            onClick={() => {
+              setAutoplay(false);
+              setCurrent(idx);
+            }}
+            className={`rounded-full transition-all duration-300 ${
+              idx === current
+                ? 'bg-gradient-to-r from-green-500 via-blue-500 to-purple-500 w-8 h-2'
+                : 'bg-gray-600 hover:bg-gray-500 w-2 h-2'
+            }`}
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.95 }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// Icon Component for SVG icons
+function IconComponent({ icon }: { icon: string }) {
+  const iconProps =
+    'w-10 h-10 text-gray-300 opacity-80 group-hover/item:opacity-100 transition-opacity';
+
+  switch (icon) {
+    case 'ml':
+      return (
+        <svg className={iconProps} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M12 3v2m-4 0h8a3 3 0 013 3v7a3 3 0 01-3 3H8a3 3 0 01-3-3V8a3 3 0 013-3z"
+          />
+          <circle cx="9.5" cy="11" r="1" fill="currentColor" />
+          <circle cx="14.5" cy="11" r="1" fill="currentColor" />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M9 15h6"
+          />
+        </svg>
+      );
+    case 'sklearn':
+      return <SiScikitlearn className={iconProps} aria-label="Scikit-learn icon" />;
+    case 'cv':
+      return <SiOpencv className={iconProps} aria-label="OpenCV icon" />;
+    case 'react':
+      return <SiReact className={iconProps} aria-label="React icon" />;
+    case 'git':
+      return <SiGit className={iconProps} aria-label="Git icon" />;
+    case 'github':
+      return <SiGithub className={iconProps} aria-label="GitHub icon" />;
+    case 'vercel':
+      return <SiVercel className={iconProps} aria-label="Vercel icon" />;
+    case 'php':
+      return <SiPhp className={iconProps} aria-label="PHP icon" />;
+    case 'kotlin':
+      return <SiKotlin className={iconProps} aria-label="Kotlin icon" />;
+    case 'yii2':
+      return <SiYii className={iconProps} aria-label="Yii icon" />;
+    case 'figma':
+      return <SiFigma className={iconProps} aria-label="Figma icon" />;
+    case 'android':
+      return <SiAndroidstudio className={iconProps} aria-label="Android Studio icon" />;
+    default:
+      return <div className={`${iconProps} bg-gray-600 rounded`} />;
+  }
+}
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -363,207 +637,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 bg-[#0f0f0f]">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-8 md:mb-12">
-            <motion.h2
-              className="text-3xl sm:text-4xl md:text-5xl font-bold"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              Technical Skills
-            </motion.h2>
-          </div>
-
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-            <motion.div 
-              className="bg-[#1a1a1a] rounded-xl md:rounded-2xl p-6 md:p-8"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              whileHover={{ y: -5 }}
-            >
-              <h3 className="text-base md:text-lg font-semibold mb-3 text-[#a8f5a8]">Languages</h3>
-              <motion.ul className="space-y-2 text-gray-400 text-xs md:text-sm">
-                <motion.li
-                  className="flex items-center gap-2"
-                  initial={{ opacity: 0, x: -12 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.05 }}
-                >
-                  <img src="/python.png" alt="Python" className="w-4 h-4 object-contain flex-shrink-0" />
-                  <span>Python</span>
-                </motion.li>
-                <motion.li
-                  className="flex items-center gap-2"
-                  initial={{ opacity: 0, x: -12 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.1 }}
-                >
-                  <img src="/java.png" alt="Java" className="w-4 h-4 object-contain flex-shrink-0" />
-                  <span>Java</span>
-                </motion.li>
-                <motion.li
-                  className="flex items-center gap-2"
-                  initial={{ opacity: 0, x: -12 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.15 }}
-                >
-                  <img src="/javascript.png" alt="JavaScript" className="w-4 h-4 object-contain flex-shrink-0" />
-                  <span>JavaScript</span>
-                </motion.li>
-                <motion.li
-                  className="flex items-center gap-2"
-                  initial={{ opacity: 0, x: -12 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.2 }}
-                >
-                  <img src="/sql.png" alt="SQL" className="w-4 h-4 object-contain flex-shrink-0" />
-                  <span>SQL</span>
-                </motion.li>
-              </motion.ul>
-            </motion.div>
-            <motion.div 
-              className="bg-[#1a1a1a] rounded-xl md:rounded-2xl p-6 md:p-8"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              whileHover={{ y: -5 }}
-            >
-              <h3 className="text-base md:text-lg font-semibold mb-3 text-[#a8f5a8]">Technologies</h3>
-              <motion.ul className="space-y-2 text-gray-400 text-xs md:text-sm">
-                <motion.li
-                  className="flex items-center gap-2"
-                  initial={{ opacity: 0, x: -12 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.05 }}
-                >
-                  <svg className="w-4 h-4 text-[#a8f5a8] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v2m-4 0h8a3 3 0 013 3v7a3 3 0 01-3 3H8a3 3 0 01-3-3V8a3 3 0 013-3z" />
-                    <circle cx="9.5" cy="11" r="1" fill="currentColor" />
-                    <circle cx="14.5" cy="11" r="1" fill="currentColor" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 15h6" />
-                  </svg>
-                  <span>Machine Learning</span>
-                </motion.li>
-                <motion.li
-                  className="flex items-center gap-2"
-                  initial={{ opacity: 0, x: -12 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.1 }}
-                >
-                  <img src="/Tensorflow_logo.svg.webp" alt="TensorFlow" className="w-4 h-4 object-contain flex-shrink-0" />
-                  <span>TensorFlow / Scikit-learn</span>
-                </motion.li>
-                <motion.li
-                  className="flex items-center gap-2"
-                  initial={{ opacity: 0, x: -12 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.15 }}
-                >
-                  <svg className="w-4 h-4 text-[#a8f5a8] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 3v2.25m4.5-2.25v2.25M9 18h6m-7.5 3h9a1.5 1.5 0 001.5-1.5V10.5A2.5 2.5 0 0015.5 8h-7A2.5 2.5 0 006 10.5v9A1.5 1.5 0 007.5 21zM9 12h.01M15 12h.01" />
-                  </svg>
-                  <span>OpenCV</span>
-                </motion.li>
-                <motion.li
-                  className="flex items-center gap-2"
-                  initial={{ opacity: 0, x: -12 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.2 }}
-                >
-                  <svg className="w-4 h-4 text-[#a8f5a8] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <circle cx="12" cy="12" r="2" strokeWidth={2} />
-                    <ellipse cx="12" cy="12" rx="8" ry="3.5" strokeWidth={1.8} />
-                    <ellipse cx="12" cy="12" rx="8" ry="3.5" transform="rotate(60 12 12)" strokeWidth={1.8} />
-                    <ellipse cx="12" cy="12" rx="8" ry="3.5" transform="rotate(120 12 12)" strokeWidth={1.8} />
-                  </svg>
-                  <span>React</span>
-                </motion.li>
-                <motion.li
-                  className="flex items-center gap-2"
-                  initial={{ opacity: 0, x: -12 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.25 }}
-                >
-                  <img src="/nodejs.png" alt="Node.js" className="w-4 h-4 object-contain flex-shrink-0" />
-                  <span>Node.js</span>
-                </motion.li>
-              </motion.ul>
-            </motion.div>
-            <motion.div 
-              className="bg-[#1a1a1a] rounded-xl md:rounded-2xl p-6 md:p-8"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              whileHover={{ y: -5 }}
-            >
-              <h3 className="text-base md:text-lg font-semibold mb-3 text-[#a8f5a8]">Tools</h3>
-              <motion.ul className="space-y-2 text-gray-400 text-xs md:text-sm">
-                <motion.li
-                  className="flex items-center gap-2"
-                  initial={{ opacity: 0, x: -12 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.05 }}
-                >
-                  <svg className="w-4 h-4 text-[#a8f5a8] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.42 3.09a7.5 7.5 0 009.49 9.49l-6.6 6.6a2 2 0 01-2.83 0l-3.57-3.57a2 2 0 010-2.83l6.6-6.6z" />
-                  </svg>
-                  <span>Git</span>
-                </motion.li>
-                <motion.li
-                  className="flex items-center gap-2"
-                  initial={{ opacity: 0, x: -12 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.1 }}
-                >
-                  <svg className="w-4 h-4 text-[#a8f5a8] flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.11.8-.26.8-.58v-2.1c-3.34.73-4.03-1.42-4.03-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.21.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49 1 .11-.78.42-1.3.76-1.6-2.66-.3-5.47-1.34-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23A11.5 11.5 0 0112 6.8c1.02 0 2.05.14 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.6-2.81 5.62-5.48 5.92.43.37.82 1.1.82 2.22v2.3c0 .32.2.69.8.58A12.01 12.01 0 0024 12c0-6.63-5.37-12-12-12z" />
-                  </svg>
-                  <span>GitHub</span>
-                </motion.li>
-                <motion.li
-                  className="flex items-center gap-2"
-                  initial={{ opacity: 0, x: -12 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.15 }}
-                >
-                  <img src="/vscode.png" alt="VS Code" className="w-4 h-4 object-contain flex-shrink-0" />
-                  <span>VS Code</span>
-                </motion.li>
-                <motion.li
-                  className="flex items-center gap-2"
-                  initial={{ opacity: 0, x: -12 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.2 }}
-                >
-                  <svg className="w-4 h-4 text-[#a8f5a8] flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 3L22 21H2L12 3z" />
-                  </svg>
-                  <span>Vercel</span>
-                </motion.li>
-              </motion.ul>
-            </motion.div>
-          </div>
+      {/* Skills Section - Modern Carousel */}
+      <section className="py-12 md:py-20 bg-[#0f0f0f]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 md:mb-16">
+          <motion.h2
+            className="text-3xl sm:text-4xl md:text-5xl font-bold"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            Technical Skills
+          </motion.h2>
         </div>
+
+        <SkillsCarousel />
       </section>
 
       {/* Education Section */}
