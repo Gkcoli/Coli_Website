@@ -60,11 +60,14 @@ body {
 
 .theme-light .text-gray-400,
 .theme-light .text-gray-300,
-.theme-light .text-gray-200 {
+.theme-light .text-gray-200,
+.theme-light .text-gray-100,
+.theme-light .hover\:text-gray-200:hover {
   color: var(--text-secondary) !important;
 }
 
-.theme-light .text-gray-500 {
+.theme-light .text-gray-500,
+.theme-light .text-gray-600 {
   color: var(--text-muted) !important;
 }
 
