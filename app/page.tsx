@@ -213,44 +213,44 @@ export default function Home() {
 
   const projects = [
     {
-      title: "Data-Driven Analysis of Daily Stress Levels and Stress-Relief Activities",
+      title: "F1 Grand Prix Winner Prediction",
       role: "Data Scientist",
       year: "2026",
-      description: "Analyzed smartwatch-generated stress data to identify patterns and correlations between stress levels and daily activities. Generated visual insights through time-series analysis to identify effective stress-relief activities and peak stress periods.",
-      technologies: ["Python", "Pandas", "Matplotlib", "NumPy", "Jupyter Notebook"],
-      github_url: "https://github.com/Gkcoli/Data-Driven-Analysis-of-Daily-Stress-Levels-and-the-Effectiveness-of-Stress-Relief-Activities"
+      description: "Built a machine learning pipeline evaluated across 70+ years of Formula 1 data; the top-performing Random Forest model achieved 92% accuracy and a 0.946 ROC-AUC in predicting Grand Prix winners.",
+      technologies: ["Python", "Scikit-learn", "Pandas", "Random Forest", "Feature Engineering"],
+      github_url: "https://github.com/Gkcoli/F1-Grand-Prix-Winner-Prediction"
     },
     {
-      title: "Meteorologically Aware AI for Enhanced Heat-Index Forecasting in the Philippine-Context",
-      role: "Data Engineer",
-      year: "2026",
-      description: "Collected and structured heat index datasets by scraping PAGASA benchmarks, LGU Facebook pages, and X sources to build a clean dataset for model training. Enabled reliable heat index forecasting across 23 PAGASA stations with strong performance metrics (RMSE = 2.35°C, MAE = 1.74°C, R² = 0.82).",
-      technologies: ["Python", "Pandas", "NumPy", "XGBoost", "Google Earth Engine", "Jupyter Notebook"],
-      github_url: "https://github.com/machiwao/Meteorologically-aware-AI-for-Enhanced-Heat-Index-Forecasting-in-the-Philippine-Context"
-    },
-    {
-      title: "ArtDecode: Leveraging Convolutional Neural Networks for Multi-Class Art Style Classification",
+      title: "ArtDecode: Multi-Class Art Style Classification with CNNs",
       role: "Machine Learning Engineer",
       year: "2025",
-      description: "Designed and trained a custom Convolutional Neural Network (CNN) to classify art styles using the WikiArt dataset. Achieved 63.08% classification accuracy across multiple art styles through systematic model tuning and dataset preprocessing.",
+      description: "Developed a VGG-13 Convolutional Neural Network for art style classification using the WikiArt dataset and achieved 63.08% classification accuracy through hyperparameter tuning and preprocessing.",
       technologies: ["Python", "TensorFlow", "Keras", "NumPy", "Matplotlib"],
       github_url: "https://github.com/machiwao/ArtDecode-Leveraging-Convolutional-Neural-Networks-for-Multi-Class-Art-Style-Classification"
     },
     {
-      title: "Learning Through Play: Evaluating Reinforcement Learning Algorithms in Integer Damath",
-      role: "Machine Learning Engineer",
-      year: "2025",
-      description: "Developed and implemented reinforcement learning agents including Q-Learning, Monte Carlo, and a custom Dyna-Q model to simulate intelligent gameplay strategies in Integer Damath. Created the Dyna-Q algorithm from scratch and evaluated algorithm efficiency and learning performance to compare learning speed and decision accuracy across the three RL approaches.",
-      technologies: ["Python", "NumPy", "Pandas", "Matplotlib"],
-      github_url: "https://github.com/machiwao/Learning-Through-Play-Evaluating-Reinforcement-Learning-Algorithms-in-Integer-Damath"
+      title: "Meteorologically Aware AI for Heat-Index Forecasting in the Philippines",
+      role: "Data Engineer",
+      year: "2025-2026",
+      description: "Collected and structured heat-index datasets by scraping PAGASA benchmarks, LGU social media pages, and X sources to build a clean, model-ready dataset for forecasting research.",
+      technologies: ["Python", "Pandas", "NumPy", "XGBoost", "Web Scraping", "Jupyter Notebook"],
+      github_url: "https://github.com/machiwao/Meteorologically-aware-AI-for-Enhanced-Heat-Index-Forecasting-in-the-Philippine-Context"
     },
     {
-      title: "Predicting Flight Delays: Using Regression Analysis",
-      role: "Machine Learning Engineer",
-      year: "2024",
-      description: "Built a machine learning model using Random Forest Regression to predict flight arrival delays based on operational and scheduling features. Achieved strong predictive performance through systematic feature selection and hyperparameter tuning.",
-      technologies: ["Python", "Scikit-learn", "Pandas", "Matplotlib", "Jupyter Notebook"],
-      github_url: "https://github.com/Gkcoli/Predicting-Flight-Delays-A-Machine-Learning-Approach/tree/main"
+      title: "Data-Driven Analysis of Daily Stress Levels and Stress-Relief Activities",
+      role: "Data Scientist",
+      year: "2025-2026",
+      description: "Analyzed smartwatch-generated biometric data to identify patterns and correlations between stress levels and daily activities, then surfaced actionable insights through time-series analysis.",
+      technologies: ["Python", "Pandas", "Matplotlib", "NumPy", "Time-Series Analysis"],
+      github_url: "https://github.com/Gkcoli/Data-Driven-Analysis-of-Daily-Stress-Levels-and-the-Effectiveness-of-Stress-Relief-Activities"
+    },
+    {
+      title: "IMDb Top 250 Movies: Statistical Analysis and Trend Forecasting",
+      role: "Data Scientist",
+      year: "2026",
+      description: "Conducted a One-Way ANOVA to measure whether IMDb scores differed significantly across primary movie genres and built a 5-year rolling-mean forecasting workflow to project rating trends through 2030.",
+      technologies: ["Python", "Pandas", "Matplotlib", "SciPy", "Statistical Analysis"],
+      github_url: "https://github.com/Gkcoli/IMDb-Top-250-Movies-Statistical-Analysis-and-Trend-Forecasting"
     }
   ];
 
@@ -482,10 +482,10 @@ export default function Home() {
               
               <div className={`space-y-4 leading-relaxed text-sm sm:text-base ${theme === 'light' ? 'text-gray-700' : 'text-gray-400'}`}>
                 <p>
-                  Computer Science student focused on machine learning and data science, with a particular interest in building data-driven systems that address real-world, socially relevant problems.
+                  Computer Science graduate with a major in Machine Learning, focused on building practical AI and data-driven solutions that turn raw data into meaningful, real-world impact.
                 </p>
                 <p className="text-xs sm:text-sm">
-                  📧 gkcolinares@gmail.com | 📱 0956-253-5772
+                  📧 gkcolinares@gmail.com | 📱 +63 956 253 5772
                 </p>
               </div>
             </motion.div>
@@ -502,9 +502,10 @@ export default function Home() {
                   <div className="w-full h-full rounded-full bg-[#0f0f0f] flex items-center justify-center overflow-hidden">
                     {/* Profile image */}
                     <img 
-                      src="/DSC_0402.JPG" 
+                      src="/profile-portrait.jpg" 
                       alt="Gian Karl Colinares" 
-                      className="w-full h-full object-cover rounded-full"
+                      className="w-full h-full object-cover rounded-full scale-[1.08]"
+                      style={{ objectPosition: 'center 18%' }}
                     />
                   </div>
                 </div>
@@ -535,13 +536,13 @@ export default function Home() {
           >
             <div className={`space-y-4 text-sm sm:text-base leading-relaxed ${theme === 'light' ? 'text-gray-700' : 'text-gray-300'}`}>
               <p>
-                I&apos;m a Computer Science student with a growing practice in machine learning and data science, focused on turning messy data into useful, human-centered insights and tools.
+                I&apos;m a Computer Science graduate with a strong focus on machine learning, data science, and practical AI systems that solve real-world problems across social, environmental, and analytical domains.
               </p>
               <p>
-                I care about applied ML, analytics, and AI that can support communities and public-impact work, especially as newer generative and data-centric methods become part of everyday systems.
+                My work spans computer vision, forecasting, data analysis, and predictive modeling, with a consistent interest in turning complex, messy datasets into interpretable and impactful insights.
               </p>
               <p>
-                Right now I&apos;m focused on deepening my machine learning and data science practice through projects, collaborations, and experiments that move from raw data to real-world impact.
+                I enjoy building data-driven solutions that connect technical depth with public value, whether through research, software development, or applied machine learning projects.
               </p>
             </div>
           </motion.div>
@@ -584,9 +585,9 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
             >
-              <h3 className="text-lg sm:text-xl md:text-2xl font-semibold mb-2">BS Computer Science - Machine Learning</h3>
-              <p className={`text-sm sm:text-base mb-2 ${theme === 'light' ? 'text-gray-700' : 'text-gray-400'}`}>National University - Manila • 2022 - Present</p>
-              <p className={`text-xs sm:text-sm ${theme === 'light' ? 'text-gray-800' : 'text-gray-500'}`}>Specializing in Machine Learning</p>
+              <h3 className="text-lg sm:text-xl md:text-2xl font-semibold mb-2">Bachelor of Science in Computer Science, Major in Machine Learning</h3>
+              <p className={`text-sm sm:text-base mb-2 ${theme === 'light' ? 'text-gray-700' : 'text-gray-400'}`}>National University - Manila • Aug 2022 - Sep 2026</p>
+              <p className={`text-xs sm:text-sm ${theme === 'light' ? 'text-gray-800' : 'text-gray-500'}`}>Graduated Cum Laude (CGWA: 3.44)</p>
             </motion.div>
             
             <motion.div 
@@ -597,7 +598,7 @@ export default function Home() {
               transition={{ delay: 0.2 }}
             >
               <h3 className="text-lg sm:text-xl md:text-2xl font-semibold mb-2">Information and Communication Technology</h3>
-              <p className={`text-sm sm:text-base mb-2 ${theme === 'light' ? 'text-gray-700' : 'text-gray-400'}`}>Army's Angels Integrated School • 2020 - 2022</p>
+              <p className={`text-sm sm:text-base mb-2 ${theme === 'light' ? 'text-gray-700' : 'text-gray-400'}`}>Army&apos;s Angels Integrated School • 2020 - 2022</p>
               <p className={`text-xs sm:text-sm ${theme === 'light' ? 'text-gray-800' : 'text-gray-500'}`}>Senior High School - ICT Strand</p>
             </motion.div>
           </div>
